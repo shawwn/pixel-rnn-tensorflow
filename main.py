@@ -97,6 +97,7 @@ def main(_):
       iterator = trange(conf.max_epoch, ncols=70, initial=initial_step)
 
       for epoch in iterator:
+        print('epoch', epoch)
         # 1. train
         total_train_costs = []
         for idx in range(train_step_per_epoch):
@@ -124,8 +125,8 @@ def main(_):
         save_images(samples, height, width, 10, 10,
             directory=SAMPLE_DIR, prefix="epoch_%s" % epoch)
 
+        print("train l: %.3f, test l: %.3f" % (avg_train_cost, avg_test_cost))
         iterator.set_description("train l: %.3f, test l: %.3f" % (avg_train_cost, avg_test_cost))
-        print()
     else:
       logger.info("Image generation starts!")
 
