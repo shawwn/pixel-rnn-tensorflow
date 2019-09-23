@@ -49,6 +49,7 @@ def save_images(images, height, width, n_row, n_col,
 
 def get_model_dir(config, exceptions=None):
   attrs = config.__dict__['__wrapped']
+  attrs = attrs.__dict__['__flags']
   pp(attrs)
 
   keys = list(attrs.keys())
@@ -65,7 +66,7 @@ def get_model_dir(config, exceptions=None):
   return os.path.join('checkpoints', *names) + '/'
 
 def preprocess_conf(conf):
-  options = conf.__wrapped
+  options = conf.__flags
 
   for option, value in list(options.items()):
     option = option.lower()
