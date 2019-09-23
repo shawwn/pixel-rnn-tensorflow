@@ -73,8 +73,8 @@ def main(_):
 
     height, width, channel = 28, 28, 1
 
-    train_step_per_epoch = mnist.train.num_examples / conf.batch_size
-    test_step_per_epoch = mnist.test.num_examples / conf.batch_size
+    train_step_per_epoch = mnist.train.num_examples // conf.batch_size
+    test_step_per_epoch = mnist.test.num_examples // conf.batch_size
   elif conf.data == "cifar":
     from cifar10 import IMAGE_SIZE, inputs
 
